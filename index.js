@@ -1,12 +1,28 @@
-// Import Express and user routes, create an instance of Express
 const express = require('express');
-const routes = require('./routes/users.js');
+const session = require('express-session');
+const booksRouter = require('./routes/books');
+const usersRouter = require('./routes/users');
+
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-// Use JSON parsing middleware and user routes
 app.use(express.json());
-app.use("/user", routes);
+app.use(
+  session({
+    secret: 'fingerprint',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000 }
+  })
+);
 
-// Start the server and log a message when it's running
-app.listen(PORT, () => console.log("Server is running at port " + PORT));
+app.use('/books', booksRouter);
+app.use('/user', usersRouter);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Book Review API is running', routes: ['/books', '/user/register', '/user/login'] });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

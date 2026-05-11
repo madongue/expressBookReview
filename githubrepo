@@ -1,0 +1,43 @@
+# GitHub repository inspection
+
+# Command attempted:
+# curl -i https://api.github.com/repos/<your-username>/<repo>
+
+# Actual GitHub API verification attempt:
+# curl -i https://api.github.com/repos/ibm-developer-skills-network/expressBookReview
+# Output:
+# HTTP/1.1 404 Not Found
+# Server: GitHub.com
+# Date: ...
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 138
+# {
+#   "message": "Not Found",
+#   "documentation_url": "https://docs.github.com/rest"
+# }
+
+# Actual local repository check output after initialization:
+# git status --short && git remote -v
+
+# Repository has been initialized locally and committed.
+# No remote fork has been configured yet.
+
+# Git commit:
+# [main (root-commit) 0516236] Initial commit of book review API scaffold
+# 11 files changed, 1744 insertions(+)
+# create mode 100644 .gitignore
+# create mode 100644 README.md
+# create mode 100644 data/books.js
+# create mode 100644 data/users.js
+# create mode 100644 githubrepo
+# create mode 100644 index.js
+# create mode 100644 install_node.ps1
+# create mode 100644 package-lock.json
+# create mode 100644 package.json
+# create mode 100644 routes/books.js
+# create mode 100644 routes/users.js
+
+# Note:
+# The current workspace at c:\Users\LESLINE\Desktop\Node is now a Git repository.
+# The original GitHub fork remote was not configured because the upstream repository URL
+# ibm-developer-skills-network/expressBookReview could not be verified from this environment.

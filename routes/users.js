@@ -1,59 +1,57 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const { findUser, createUser, users } = require('../data/users');
+
 const router = express.Router();
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || 'access-secret-key';
 
-
-let users = [
-    {
-        firstName: "John",
-        lastName: "wick",
-        email:"johnwick@gamil.com",
-        DOB:"22-01-1990",
-    },
-    {
-        firstName: "John",
-        lastName: "smith",
-        email:"johnsmith@gamil.com",
-        DOB:"21-07-1983",
-    },
-    {
-        firstName: "Joyal",
-        lastName: "white",
-        email:"joyalwhite@gamil.com",
-        DOB:"21-03-1989",
-    },
-];
-
-// GET request: Retrieve all users
-router.get("/",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+router.get('/', async (req, res) => {
+  res.json(users.map(({ username, createdAt }) => ({ username, createdAt })));
 });
 
-// GET by specific ID request: Retrieve a single user with email ID
-router.get("/:email",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ message: 'username and password are required' });
+  }
+
+  try {
+    const newUser = await createUser({ username, password });
+    return res.status(201).json({ message: 'User registered', user: { username: newUser.username, createdAt: newUser.createdAt } });
+  } catch (error) {
+    return res.status(409).json({ message: error.message });
+  }
 });
 
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ message: 'username and password are required' });
+  }
 
-// POST request: Create a new user
-router.post("/",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  const user = await findUser(username);
+  if (!user || user.password !== password) {
+    return res.status(401).json({ message: 'Invalid credentials' });
+  }
+
+  const accessToken = jwt.sign({ data: { username: user.username } }, ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+  req.session.authorization = { accessToken };
+
+  res.json({ message: 'User successfully logged in', accessToken });
 });
 
+router.get('/me', (req, res) => {
+  const sessionAuth = req.session.authorization;
+  if (!sessionAuth || !sessionAuth.accessToken) {
+    return res.status(403).json({ message: 'User not logged in' });
+  }
 
-// PUT request: Update the details of a user by email ID
-router.put("/:email", (req, res) => {
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  jwt.verify(sessionAuth.accessToken, ACCESS_TOKEN_SECRET, (err, payload) => {
+    if (err) {
+      return res.status(403).json({ message: 'User not authenticated' });
+    }
+    res.json({ user: payload.data });
+  });
 });
 
-
-// DELETE request: Delete a user by email ID
-router.delete("/:email", (req, res) => {
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
-});
-
-module.exports=router;
+module.exports = router;
