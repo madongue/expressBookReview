@@ -13,4 +13,6 @@
 # Connection: keep-alive
 # Keep-Alive: timeout=5
 # 
-# [{"username":"alice","rating":5,"comment":"A smart and thrilling survival story."},{"username":"bob","rating":4,"comment":"Engaging science and humor."}]}
+# [{'username':'alice','rating':5,'comment':'A smart and thrilling survival story.'},{'username':'bob','rating':4,'comment':'Engaging science and humor.'}]
+
+# Note: The 'review' endpoint returns all reviews for a book via the /reviews path

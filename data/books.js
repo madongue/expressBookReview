@@ -31,6 +31,54 @@ const books = [
     reviews: [
       { username: 'edward', rating: 5, comment: 'Epic world-building and politics.' }
     ]
+  },
+  {
+    isbn: '9780451524935',
+    title: '1984',
+    author: 'George Orwell',
+    reviews: [
+      { username: 'frank', rating: 5, comment: 'Dystopian masterpiece.' }
+    ]
+  },
+  {
+    isbn: '9780061120084',
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    reviews: [
+      { username: 'grace', rating: 5, comment: 'A timeless classic about justice.' }
+    ]
+  },
+  {
+    isbn: '9780316769174',
+    title: 'The Catcher in the Rye',
+    author: 'J.D. Salinger',
+    reviews: [
+      { username: 'henry', rating: 4, comment: 'Coming-of-age tale.' }
+    ]
+  },
+  {
+    isbn: '9780141439570',
+    title: 'Pride and Prejudice',
+    author: 'Jane Austen',
+    reviews: [
+      { username: 'iris', rating: 5, comment: 'Romantic and witty.' }
+    ]
+  },
+  {
+    isbn: '9780374529857',
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    reviews: [
+      { username: 'jack', rating: 5, comment: 'Jazz age brilliance.' }
+    ]
+  },
+  {
+    isbn: '9780192806994',
+    title: 'Brave New World',
+    author: 'Aldous Huxley',
+    reviews: [
+      { username: 'kate', rating: 5, comment: 'Thought-provoking future.' }
+    ]
   }
 ];
 

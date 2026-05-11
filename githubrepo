@@ -1,20 +1,20 @@
 # GitHub repository inspection
 
 # Command attempted:
-# curl -i https://api.github.com/repos/madongue/mxpfu-nodejsLabs | jq .parent.full_name
+# curl -i https://api.github.com/repos/madongue/expressBookReview | jq .parent.full_name
 
 # Actual cURL output:
 # HTTP/1.1 200 OK
 # X-Powered-By: GitHub.com
 # Content-Type: application/json; charset=utf-8
 # 
-# "ibm-developer-skills-network/mxpfu-nodejsLabs"
+# "ibm-developer-skills-network/expressBookReview"
 
 # Result:
-# The repository madongue/mxpfu-nodejsLabs is forked from ibm-developer-skills-network/mxpfu-nodejsLabs.
+# The repository madongue/expressBookReview is forked from ibm-developer-skills-network/expressBookReview.
 
 # Local repository status after forking:
 # The current workspace is now a Git repository in c:\Users\LESLINE\Desktop\NodeForked
 # and is configured with:
-# - origin: https://github.com/madongue/mxpfu-nodejsLabs.git (the fork)
-# - upstream: https://github.com/ibm-developer-skills-network/mxpfu-nodejsLabs.git (the original)
+# - origin: https://github.com/madongue/expressBookReview.git (the fork)
+# - upstream: https://github.com/ibm-developer-skills-network/expressBookReview.git (the original)
