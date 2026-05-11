@@ -1,0 +1,16 @@
+# cURL command to register a new user
+
+# Command:
+# curl -i -H "Content-Type: application/json" -d "{\"username\":\"testuser123\",\"password\":\"Password1!\"}" http://localhost:5001/user/register
+
+# Output:
+# HTTP/1.1 201 Created
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 102
+# ETag: W/"66-Tu3gmEfuWr9As0ifGMaKovXo9nA"
+# Date: Mon, 11 May 2026 22:21:50 GMT
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# 
+# {"message":"User registered","user":{"username":"testuser123","createdAt":"2026-05-11T22:21:50.486Z"}}

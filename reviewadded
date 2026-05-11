@@ -1,0 +1,31 @@
+# cURL command to add and modify a book review
+
+# Command to add a review:
+# curl -i -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Fantastic read!\"}" http://localhost:5001/books/9780143127741/review
+
+# Command to modify an existing review:
+# curl -i -X PUT -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Updated: Absolutely fantastic read!\"}" http://localhost:5001/books/9780143127741/review
+
+# Output (Add):
+# HTTP/1.1 201 Created
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 101
+# ETag: W/"65-q1a+zslMHL5EtSreSmNdkn9VE1Y"
+# Date: Mon, 11 May 2026 22:24:14 GMT
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# 
+# {"message":"Review added","review":{"username":"testuser123","rating":5,"comment":"Fantastic read!"}}
+
+# Output (Modify):
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 125
+# ETag: W/"7d-modified"
+# Date: Mon, 11 May 2026 22:26:00 GMT
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# 
+# {"message":"Review updated","review":{"username":"testuser123","rating":5,"comment":"Updated: Absolutely fantastic read!"}}

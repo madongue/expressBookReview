@@ -1,0 +1,16 @@
+# cURL command to get all books
+
+# Command:
+# curl -i http://localhost:5001/books
+
+# Output:
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 723
+# ETag: W/"2d3-H71Hgzvj+8Y7y36/kddlxeBjjF4"
+# Date: Mon, 11 May 2026 22:15:14 GMT
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# 
+# [{"isbn":"9780143127741","title":"The Martian","author":"Andy Weir","reviews":[{"username":"alice","rating":5,"comment":"A smart and thrilling survival story."},{"username":"bob","rating":4,"comment":"Engaging science and humor."}]},{"isbn":"9780062316097","title":"The Alchemist","author":"Paulo Coelho","reviews":[{"username":"charlie","rating":5,"comment":"Beautiful, inspiring, and timeless."}]},{"isbn":"9780307277671","title":"The Kite Runner","author":"Khaled Hosseini","reviews":[{"username":"diana","rating":5,"comment":"Heartbreaking and unforgettable."}]},{"isbn":"9780553380163","title":"Dune","author":"Frank Herbert","reviews":[{"username":"edward","rating":5,"comment":"Epic world-building and politics."}]}]

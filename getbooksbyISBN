@@ -1,0 +1,16 @@
+# cURL command to get book by ISBN
+
+# Command:
+# curl -i http://localhost:5001/books/9780143127741
+
+# Output:
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 231
+# ETag: W/"e7-aCvN5cvfxSUPoW7MxM2xS/L1nKI"
+# Date: Mon, 11 May 2026 22:16:26 GMT
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# 
+# {"isbn":"9780143127741","title":"The Martian","author":"Andy Weir","reviews":[{"username":"alice","rating":5,"comment":"A smart and thrilling survival story."},{"username":"bob","rating":4,"comment":"Engaging science and humor."}]}
