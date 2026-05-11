@@ -1,8 +1,8 @@
 # cURL command to delete a book review
-# Using the 'review' endpoint: /books/:isbn/review
+# Endpoint: DELETE /books/:isbn/review
 
 # Command (DELETE to review endpoint):
-# curl -i -b cookie.txt -X DELETE http://localhost:5001/books/9780143127741/review
+# curl -i -X DELETE -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoidGVzdHVzZXIxMjMifSwiaWF0IjoxNzc4NTM4MTgwLCJleHAiOjE3Nzg1NDE3ODB9.SmUw8PaWjNJyZ8PiI8uHuHiTO4V4hIiTX5tj7jjQTJ8" http://localhost:5001/books/9780143127741/review
 
 # Output:
 # HTTP/1.1 200 OK

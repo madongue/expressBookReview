@@ -1,11 +1,11 @@
 # cURL command to add and modify a book review
-# Using the 'review' endpoint: /books/:isbn/review
+# Endpoint: POST /books/:isbn/review (add) and PUT /books/:isbn/review (modify)
 
 # Command to add a review (POST to review endpoint):
-# curl -i -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Fantastic read!\"}" http://localhost:5001/books/9780143127741/review
+# curl -i -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoidGVzdHVzZXIxMjMifSwiaWF0IjoxNzc4NTM4MTgwLCJleHAiOjE3Nzg1NDE3ODB9.SmUw8PaWjNJyZ8PiI8uHuHiTO4V4hIiTX5tj7jjQTJ8" -d "{\"rating\":5,\"comment\":\"Fantastic read!\"}" http://localhost:5001/books/9780143127741/review
 
 # Command to modify an existing review (PUT to review endpoint):
-# curl -i -X PUT -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Updated: Absolutely fantastic read!\"}" http://localhost:5001/books/9780143127741/review
+# curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoidGVzdHVzZXIxMjMifSwiaWF0IjoxNzc4NTM4MTgwLCJleHAiOjE3Nzg1NDE3ODB9.SmUw8PaWjNJyZ8PiI8uHuHiTO4V4hIiTX5tj7jjQTJ8" -d "{\"rating\":5,\"comment\":\"Updated: Absolutely fantastic read!\"}" http://localhost:5001/books/9780143127741/review
 
 # Output (Add):
 # HTTP/1.1 201 Created

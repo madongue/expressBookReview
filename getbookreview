@@ -1,4 +1,5 @@
 # cURL command to get book review
+# Endpoint: GET /books/:isbn/review
 
 # Command:
 # curl -i http://localhost:5001/books/9780143127741/review
@@ -9,10 +10,10 @@
 # Content-Type: application/json; charset=utf-8
 # Content-Length: 153
 # ETag: W/"99-weS0Dm8Oik/1VxHCijEe/a1Vau0"
-# Date: Mon, 11 May 2026 22:20:16 GMT
+# Date: Mon, 11 May 2026 23:15:30 GMT
 # Connection: keep-alive
 # Keep-Alive: timeout=5
 # 
-# [{'username':'alice','rating':5,'comment':'A smart and thrilling survival story.'},{'username':'bob','rating':4,'comment':'Engaging science and humor.'}]
+# [{"username":"alice","rating":5,"comment":"A smart and thrilling survival story."},{"username":"bob","rating":4,"comment":"Engaging science and humor."}]
 
-# Note: The 'review' endpoint is accessed via GET request to /books/:isbn/review
+# Result: Successfully retrieved all reviews for book ISBN 9780143127741
