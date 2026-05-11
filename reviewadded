@@ -1,9 +1,10 @@
 # cURL command to add and modify a book review
+# Using the 'review' endpoint: /books/:isbn/review
 
-# Command to add a review:
+# Command to add a review (POST to review endpoint):
 # curl -i -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Fantastic read!\"}" http://localhost:5001/books/9780143127741/review
 
-# Command to modify an existing review:
+# Command to modify an existing review (PUT to review endpoint):
 # curl -i -X PUT -b cookie.txt -H "Content-Type: application/json" -d "{\"rating\":5,\"comment\":\"Updated: Absolutely fantastic read!\"}" http://localhost:5001/books/9780143127741/review
 
 # Output (Add):

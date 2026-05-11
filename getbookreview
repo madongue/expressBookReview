@@ -1,7 +1,7 @@
 # cURL command to get book review
 
 # Command:
-# curl -i http://localhost:5001/books/9780143127741/reviews
+# curl -i http://localhost:5001/books/9780143127741/review
 
 # Output:
 # HTTP/1.1 200 OK
@@ -15,4 +15,4 @@
 # 
 # [{'username':'alice','rating':5,'comment':'A smart and thrilling survival story.'},{'username':'bob','rating':4,'comment':'Engaging science and humor.'}]
 
-# Note: The 'review' endpoint returns all reviews for a book via the /reviews path
+# Note: The 'review' endpoint is accessed via GET request to /books/:isbn/review

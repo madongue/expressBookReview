@@ -47,6 +47,15 @@ router.get('/:isbn/reviews', async (req, res) => {
   res.json(book.reviews || []);
 });
 
+// Alias for GET reviews - using /review endpoint (matches POST/PUT/DELETE convention)
+router.get('/:isbn/review', async (req, res) => {
+  const book = await findBookByISBN(req.params.isbn);
+  if (!book) {
+    return res.status(404).json({ message: 'Book not found' });
+  }
+  res.json(book.reviews || []);
+});
+
 router.post('/:isbn/review', authenticate, async (req, res) => {
   const book = await findBookByISBN(req.params.isbn);
   if (!book) {

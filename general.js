@@ -6,9 +6,16 @@ const BASE_URL = 'http://localhost:5001';
 const getAllBooks = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/books`);
-    return response.data;
+    if (response.status === 200) {
+      console.log('Successfully retrieved all books');
+      return response.data;
+    }
   } catch (error) {
-    console.error('Error fetching all books:', error.message);
+    if (error.response && error.response.status === 404) {
+      console.error('Books endpoint not found');
+    } else {
+      console.error('Error fetching all books:', error.message);
+    }
     throw error;
   }
 };
@@ -17,9 +24,16 @@ const getAllBooks = async () => {
 const getBookByISBN = async (isbn) => {
   try {
     const response = await axios.get(`${BASE_URL}/books/${isbn}`);
-    return response.data;
+    if (response.status === 200) {
+      console.log(`Successfully retrieved book with ISBN ${isbn}`);
+      return response.data;
+    }
   } catch (error) {
-    console.error(`Error fetching book with ISBN ${isbn}:`, error.message);
+    if (error.response && error.response.status === 404) {
+      console.error(`Book with ISBN ${isbn} not found`);
+    } else {
+      console.error(`Error fetching book with ISBN ${isbn}:`, error.message);
+    }
     throw error;
   }
 };
@@ -30,9 +44,20 @@ const getBooksByAuthor = async (author) => {
     const response = await axios.get(`${BASE_URL}/books/search`, {
       params: { author }
     });
-    return response.data;
+    if (response.status === 200) {
+      if (response.data.length === 0) {
+        console.log(`No books found for author: ${author}`);
+      } else {
+        console.log(`Successfully retrieved ${response.data.length} book(s) by ${author}`);
+      }
+      return response.data;
+    }
   } catch (error) {
-    console.error(`Error fetching books by author ${author}:`, error.message);
+    if (error.response && error.response.status === 404) {
+      console.error(`Author ${author} not found`);
+    } else {
+      console.error(`Error fetching books by author ${author}:`, error.message);
+    }
     throw error;
   }
 };
@@ -43,9 +68,20 @@ const getBooksByTitle = async (title) => {
     const response = await axios.get(`${BASE_URL}/books/search`, {
       params: { title }
     });
-    return response.data;
+    if (response.status === 200) {
+      if (response.data.length === 0) {
+        console.log(`No books found with title: ${title}`);
+      } else {
+        console.log(`Successfully retrieved ${response.data.length} book(s) with title ${title}`);
+      }
+      return response.data;
+    }
   } catch (error) {
-    console.error(`Error fetching books by title ${title}:`, error.message);
+    if (error.response && error.response.status === 404) {
+      console.error(`Title ${title} not found`);
+    } else {
+      console.error(`Error fetching books by title ${title}:`, error.message);
+    }
     throw error;
   }
 };
@@ -53,9 +89,18 @@ const getBooksByTitle = async (title) => {
 // Function to get all books using promise callbacks
 const getAllBooksWithPromise = () => {
   return axios.get(`${BASE_URL}/books`)
-    .then(response => response.data)
+    .then(response => {
+      if (response.status === 200) {
+        console.log('Successfully retrieved all books');
+        return response.data;
+      }
+    })
     .catch(error => {
-      console.error('Error fetching all books:', error.message);
+      if (error.response && error.response.status === 404) {
+        console.error('Books endpoint not found');
+      } else {
+        console.error('Error fetching all books:', error.message);
+      }
       throw error;
     });
 };
@@ -63,9 +108,18 @@ const getAllBooksWithPromise = () => {
 // Function to get book by ISBN using promise callbacks
 const getBookByISBNWithPromise = (isbn) => {
   return axios.get(`${BASE_URL}/books/${isbn}`)
-    .then(response => response.data)
+    .then(response => {
+      if (response.status === 200) {
+        console.log(`Successfully retrieved book with ISBN ${isbn}`);
+        return response.data;
+      }
+    })
     .catch(error => {
-      console.error(`Error fetching book with ISBN ${isbn}:`, error.message);
+      if (error.response && error.response.status === 404) {
+        console.error(`Book with ISBN ${isbn} not found`);
+      } else {
+        console.error(`Error fetching book with ISBN ${isbn}:`, error.message);
+      }
       throw error;
     });
 };
@@ -75,9 +129,22 @@ const getBooksByAuthorWithPromise = (author) => {
   return axios.get(`${BASE_URL}/books/search`, {
     params: { author }
   })
-    .then(response => response.data)
+    .then(response => {
+      if (response.status === 200) {
+        if (response.data.length === 0) {
+          console.log(`No books found for author: ${author}`);
+        } else {
+          console.log(`Successfully retrieved ${response.data.length} book(s) by ${author}`);
+        }
+        return response.data;
+      }
+    })
     .catch(error => {
-      console.error(`Error fetching books by author ${author}:`, error.message);
+      if (error.response && error.response.status === 404) {
+        console.error(`Author ${author} not found`);
+      } else {
+        console.error(`Error fetching books by author ${author}:`, error.message);
+      }
       throw error;
     });
 };
@@ -87,9 +154,22 @@ const getBooksByTitleWithPromise = (title) => {
   return axios.get(`${BASE_URL}/books/search`, {
     params: { title }
   })
-    .then(response => response.data)
+    .then(response => {
+      if (response.status === 200) {
+        if (response.data.length === 0) {
+          console.log(`No books found with title: ${title}`);
+        } else {
+          console.log(`Successfully retrieved ${response.data.length} book(s) with title ${title}`);
+        }
+        return response.data;
+      }
+    })
     .catch(error => {
-      console.error(`Error fetching books by title ${title}:`, error.message);
+      if (error.response && error.response.status === 404) {
+        console.error(`Title ${title} not found`);
+      } else {
+        console.error(`Error fetching books by title ${title}:`, error.message);
+      }
       throw error;
     });
 };
